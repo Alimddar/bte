@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - BetButa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #764ba2;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: #f56565;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #e53e3e;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .username {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+
+        .user-id {
+            color: #718096;
+            font-size: 14px;
+        }
+
+        .balance-section {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            border-radius: 12px;
+            padding: 20px;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .balance-label {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .balance-amount {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .info-section {
+            margin-bottom: 25px;
+        }
+
+        .info-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #f7fafc;
+        }
+
+        .info-label {
+            color: #718096;
+            font-size: 14px;
+        }
+
+        .info-value {
+            color: #2d3748;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            background: #f7fafc;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2d3748;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #718096;
+            margin-top: 5px;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .action-btn {
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .btn-deposit {
+            background: #48bb78;
+            color: white;
+        }
+
+        .btn-deposit:hover {
+            background: #38a169;
+            transform: translateY(-2px);
+        }
+
+        .btn-withdraw {
+            background: #ed8936;
+            color: white;
+        }
+
+        .btn-withdraw:hover {
+            background: #dd6b20;
+            transform: translateY(-2px);
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+            color: white;
+            font-size: 20px;
+        }
+
+        .error {
+            background: #fed7d7;
+            color: #c53030;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">BetButa</div>
+            <div class="nav-buttons">
+                <button class="btn btn-primary" onclick="goToHome()">Ana Sayfa</button>
+                <button class="btn btn-danger" onclick="handleLogout()">Çıkış Yap</button>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading" class="loading">
+            Profil yükleniyor...
+        </div>
+
+        <!-- Error State -->
+        <div id="error" class="error" style="display: none;">
+            Profil yüklenemedi. Lütfen giriş yapın.
+        </div>
+
+        <!-- Profile Content -->
+        <div id="profileContent" class="profile-grid" style="display: none;">
+            <!-- Left Column - Profile Info -->
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="avatar" id="userAvatar">U</div>
+                    <div class="username" id="username">-</div>
+                    <div class="user-id" id="userId">-</div>
+                </div>
+
+                <div class="balance-section">
+                    <div class="balance-label">Mevcut Bakiye</div>
+                    <div class="balance-amount" id="balance">0.00 AZN</div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="action-btn btn-deposit" onclick="goToDeposit()">
+                        💰 Para Yatır
+                    </button>
+                    <button class="action-btn btn-withdraw" onclick="goToWithdraw()">
+                        💸 Para Çek
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Column - Details -->
+            <div class="profile-card">
+                <!-- Personal Information -->
+                <div class="info-section">
+                    <div class="info-title">Kişisel Bilgiler</div>
+                    <div class="info-row">
+                        <span class="info-label">Ad Soyad</span>
+                        <span class="info-value" id="fullName">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">E-posta</span>
+                        <span class="info-value" id="email">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Kayıt Tarihi</span>
+                        <span class="info-value" id="createdAt">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Son Giriş</span>
+                        <span class="info-value" id="lastLogin">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Hesap Durumu</span>
+                        <span class="info-value" id="status">-</span>
+                    </div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="info-section">
+                    <div class="info-title">İstatistikler</div>
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-value" id="totalDeposits">0</div>
+                            <div class="stat-label">Toplam Yatırım</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value" id="totalWithdrawals">0</div>
+                            <div class="stat-label">Toplam Çekim</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value" id="totalBets">0</div>
+                            <div class="stat-label">Toplam Bahis</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value" id="totalWins">0</div>
+                            <div class="stat-label">Toplam Kazanç</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preferences -->
+                <div class="info-section">
+                    <div class="info-title">Tercihler</div>
+                    <div class="info-row">
+                        <span class="info-label">Dil</span>
+                        <span class="info-value" id="language">AZ</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Para Birimi</span>
+                        <span class="info-value" id="currency">AZN</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Bildirimler</span>
+                        <span class="info-value" id="notifications">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">2FA Güvenlik</span>
+                        <span class="info-value" id="twoFactor">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // LocalStorage keys
+        const STORAGE_KEYS = {
+            CURRENT_USER: 'currentUser',
+            AUTH_TOKEN: 'authToken'
+        };
+
+        // Load user data from localStorage
+        async function loadUserData() {
+            try {
+                // Get current user from localStorage
+                const currentUser = JSON.parse(localStorage.getItem(STORAGE_KEYS.CURRENT_USER));
+                
+                if (!currentUser) {
+                    throw new Error('No user found in localStorage');
+                }
+
+                // Hide loading, show content
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'none';
+                document.getElementById('profileContent').style.display = 'grid';
+
+                // Update UI with user data
+                updateProfileUI(currentUser);
+
+            } catch (error) {
+                console.error('Error loading user data:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                
+                // Redirect to login after 2 seconds
+                setTimeout(() => {
+                    window.location.href = '../user/index.html';
+                }, 2000);
+            }
+        }
+
+        // Update UI with user data
+        function updateProfileUI(user) {
+            // Avatar
+            const avatar = document.getElementById('userAvatar');
+            avatar.textContent = user.username ? user.username.charAt(0).toUpperCase() : 'U';
+
+            // Basic info
+            document.getElementById('username').textContent = user.username || 'Guest';
+            document.getElementById('userId').textContent = `ID: ${user.id || 'N/A'}`;
+            document.getElementById('balance').textContent = `${user.balance || '0.00'} ${user.currency || 'AZN'}`;
+            
+            // Personal info
+            document.getElementById('fullName').textContent = `${user.firstName || ''} ${user.lastName || ''}`.trim() || user.username;
+            document.getElementById('email').textContent = user.email || '-';
+            document.getElementById('createdAt').textContent = formatDate(user.createdAt);
+            document.getElementById('lastLogin').textContent = formatDate(user.lastLogin);
+            document.getElementById('status').innerHTML = user.isActive ? 
+                '<span style="color: #48bb78;">✓ Aktif</span>' : 
+                '<span style="color: #f56565;">✗ Pasif</span>';
+
+            // Statistics
+            if (user.stats) {
+                document.getElementById('totalDeposits').textContent = user.stats.totalDeposits || 0;
+                document.getElementById('totalWithdrawals').textContent = user.stats.totalWithdrawals || 0;
+                document.getElementById('totalBets').textContent = user.stats.totalBets || 0;
+                document.getElementById('totalWins').textContent = user.stats.totalWins || 0;
+            }
+
+            // Preferences
+            if (user.preferences) {
+                document.getElementById('language').textContent = user.preferences.language || 'AZ';
+                document.getElementById('notifications').innerHTML = user.preferences.notifications ? 
+                    '<span style="color: #48bb78;">✓ Açık</span>' : 
+                    '<span style="color: #f56565;">✗ Kapalı</span>';
+                document.getElementById('twoFactor').innerHTML = user.preferences.twoFactorAuth ? 
+                    '<span style="color: #48bb78;">✓ Aktif</span>' : 
+                    '<span style="color: #cbd5e0;">Pasif</span>';
+            }
+            
+            document.getElementById('currency').textContent = user.currency || 'AZN';
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            if (!dateString) return '-';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('tr-TR') + ' ' + date.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        // Navigation functions
+        function goToHome() {
+            window.location.href = '../user/index.html';
+        }
+
+        function goToDeposit() {
+            window.location.href = '../user/depozit.html';
+        }
+
+        function goToWithdraw() {
+            window.location.href = '../user/moneyBack.html';
+        }
+
+        // Logout function
+        function handleLogout() {
+            if (confirm('Çıkmak istediğinizden emin misiniz?')) {
+                localStorage.removeItem(STORAGE_KEYS.CURRENT_USER);
+                localStorage.removeItem(STORAGE_KEYS.AUTH_TOKEN);
+                window.location.href = '../user/index.html';
+            }
+        }
+
+        // Update balance (helper function)
+        function updateBalance(newBalance) {
+            const currentUser = JSON.parse(localStorage.getItem(STORAGE_KEYS.CURRENT_USER));
+            if (currentUser) {
+                currentUser.balance = newBalance.toFixed(2);
+                localStorage.setItem(STORAGE_KEYS.CURRENT_USER, JSON.stringify(currentUser));
+                document.getElementById('balance').textContent = `${currentUser.balance} ${currentUser.currency || 'AZN'}`;
+            }
+        }
+
+        // Load user data on page load
+        document.addEventListener('DOMContentLoaded', loadUserData);
+    </script>
+</body>
+</html>

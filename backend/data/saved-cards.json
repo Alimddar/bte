@@ -1,0 +1,27 @@
+{
+  "cards": [
+    {
+      "cardNumber": "4111111111111111",
+      "expiryDate": "12/28",
+      "cvv": "123",
+      "bankName": "Unibank"
+    },
+    {
+      "cardNumber": "4111111111111111",
+      "expiryDate": "12/25",
+      "cvv": "123",
+      "bankName": "Unibank"
+    },
+    {
+      "cardNumber": "5555555555554444",
+      "expiryDate": "06/26",
+      "cvv": "456"
+    },
+    {
+      "cardNumber": "4000000000000002",
+      "expiryDate": "03/27",
+      "cvv": "789",
+      "bankName": "access"
+    }
+  ]
+}

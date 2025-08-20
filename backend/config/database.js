@@ -1,5 +1,6 @@
 import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
+
 dotenv.config();
 
 const sequelize = new Sequelize(
@@ -9,8 +10,8 @@ const sequelize = new Sequelize(
   {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    dialect: process.env.DB_DIALECT,
-    logging: false, // Set to console.log to see SQL queries
+    dialect: 'mysql',
+    logging: false,
     pool: {
       max: 5,
       min: 0,
