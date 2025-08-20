@@ -2,10 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Güvənin Və Qazancın Tək Adresi BetButa</title>
-    <!-- ! FONT -->
+    <title>Şəxsi məlumatlar</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,7 +22,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="./assets/style/index/index.css" />
+    <link rel="stylesheet" href="./assets/style/personal/index.css" />
     <!-- ! OWL CARAOUSEL CSS -->
   </head>
   <body>
@@ -143,8 +141,7 @@
       </div>
     </div>
 
-    <div class="root">
-      <!-- ! HEADER -->
+    <div id="root">
       <header id="header">
         <!--! HEADER => MOBILE -->
         <div class="mobile-part">
@@ -244,7 +241,12 @@
         <div class="nav-part">
           <div class="banner">
             <a href="./index.html">
-              <img src="./img/section/logo.png" alt="" width="114" height="32" />
+              <img
+                src="./img/section/logo.png"
+                alt=""
+                width="114"
+                height="32"
+              />
             </a>
           </div>
           <nav>
@@ -281,107 +283,116 @@
       </header>
       <!-- ! HEADER -->
 
-      <!-- ! MAIN -->
       <main>
-        <div class="main-slider">
-          <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <a href="">
-                  <img src="./img/cover/cover-1.jpeg" alt="" />
-                </a>
+        <div class="container">
+          <div class="account-content">
+            <div class="content-title">Hesabım</div>
+            <div class="wrapper">
+              <div class="category financial">
+                <div class="wrapper-title">
+                  <i class="fa-solid fa-building-columns"></i>
+                  &nbsp; Maliyyə Əməliyyatları
+                </div>
+                <div class="sub-category">
+                  <ul>
+                    <li><a href="depozit.html">Depozit</a></li>
+                    <li>
+                      <a href="moneyBack.html">Pul Çıxarışı</a>
+                    </li>
+                    <li><a href="./transactions.html">Tarixçələr</a></li>
+                  </ul>
+                </div>
+                <hr />
               </div>
-              <div class="swiper-slide">
-                <a href="">
-                  <img src="./img/cover/cover-2.jpeg" alt="" />
-                </a>
+              <div class="setting category">
+                <div class="wrapper-title">
+                  <i class="fa-solid fa-gear"></i>
+                  Parametrlər
+                </div>
+                <div class="sub-category">
+                  <ul>
+                    <li><a href="#" class="active">Şəxsi Məlumatlar</a></li>
+                    <li><a href="./changePass.html">Şifrəni Dəyiş</a></li>
+                    <li><a href="">Ozmopay Vouchers</a></li>
+                  </ul>
+                </div>
+                <hr />
               </div>
-              <div class="swiper-slide">
-                <a href="">
-                  <img src="./img/cover/cover-3.png" alt="" />
-                </a>
-              </div>
-              <div class="swiper-slide">
-                <a href="">
-                  <img src="./img/cover/cover-4.jpeg" alt="" />
-                </a>
-              </div>
-              <div class="swiper-slide">
-                <a href="">
-                  <img src="./img/cover/cover-5.jpeg" alt="" />
-                </a>
-              </div>
-              <div class="swiper-slide">
-                <a href="">
-                  <img src="./img/cover/cover-6.jpeg" alt="" />
-                </a>
-              </div>
-              <div class="swiper-slide">
-                <a href="">
-                  <img src="./img/cover/cover-7.jpeg" alt="" />
-                </a>
-              </div>
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-          </div>
-        </div>
-        <div class="wrapper-content">
-          <div class="mini-games">
-            <div class="content">
-              <div class="box box-1">
-                <a href="">
-                  <img src="./img/section/section-1.png" alt="" />
-                </a>
-              </div>
-              <div class="box box-2">
-                <a href="">
-                  <img src="./img/section/section-2.jpeg" alt="" />
-                </a>
-              </div>
-              <div class="box box-3">
-                <a href="">
-                  <img src="./img/section/section-3.png" alt="" />
-                </a>
-              </div>
-              <div class="box box-4">
-                <a href="">
-                  <img src="./img/section/section-1.png" alt="" />
-                </a>
+              <div class="account-process category">
+                <div class="wrapper-title">
+                  <i class="fa-solid fa-building-columns"></i>
+                  Hesab Əməlliyatları
+                </div>
+                <div class="sub-category">
+                  <ul>
+                    <li><a href="">Bonus</a></li>
+                    <li><a href="">FREESPİNS</a></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-          <div class="mini-games-2">
-            <h3 class="title">
-              <span>SLOT</span>
-              <a href="">SEE ALL</a>
-            </h3>
-            <div class="content">
-              <div class="box box-1">
-                <a href="">
-                  <img src="./img/section/game-1.jpeg" alt="" />
-                </a>
+          <div class="depozit-content">
+            <div class="content-title">
+              <a href="./index.html" style="color: #fff">
+                <i class="fa-solid fa-chevron-down back"></i>
+              </a>
+              <span>
+                <i class="fa-solid fa-wallet"></i> &nbsp; Şəxsi Məlumatlar</span
+              >
+            </div>
+            <div class="balance-information">
+              <div class="balance-amount">
+                <span>Balans</span>
+                <span> <b class="balance-data">9.93</b>&nbsp; AZN </span>
               </div>
-              <div class="box box-2">
-                <a href="">
-                  <img src="./img/section/game-2.jpeg" alt="" />
-                </a>
+              <a href="./depozit.html" class="btn-depozit">Depozit</a>
+            </div>
+            <div class="account-detail">
+              <div class="box left">
+                <div class="data-content">
+                  <label for=""> İstifadəçi Adı </label>
+                  <input type="text" value="kamranm" name="" id="" disabled />
+                </div>
+                   <div class="data-content">
+                  <label for=""> Mail Adresi </label>
+                  <input type="text" value="zmtdu@punkproof.com" name="" id="" disabled />
+                </div>
+                   <div class="data-content">
+                  <label for=""> Ad </label>
+                  <input type="text" value="kamran" name="" id="" disabled />
+                </div>
+                  <div class="data-content">
+                  <label for=""> Soyad </label>
+                  <input type="text" value="musayev" name="" id="" disabled />
+                </div>
+                  <div class="data-content">
+                  <label for=""> Doğum Tarixi </label>
+                  <input type="text" value="1997-07-11" name="" id="" disabled />
+                </div>
               </div>
-              <div class="box box-3">
-                <a href="">
-                  <img src="./img/section/game-3.jpeg" alt="" />
-                </a>
-              </div>
-              <div class="box box-4">
-                <a href="">
-                  <img src="./img/section/game-4.jpeg" alt="" />
-                </a>
+              <div class="box right">
+                <div class="data-content">
+                  <label for=""> COUNTRY </label>
+                  <input type="text" value="Azerbaijan" name="" id="" disabled />
+                </div>
+                  <div class="data-content">
+                  <label for=""> CITY </label>
+                  <input type="text" value="" name="" id="" disabled />
+                </div>
+                  <div class="data-content">
+                  <label for=""> Adres </label>
+                  <input type="text" value="" name="" id="" disabled />
+                </div>
+                   <div class="data-content">
+                  <label for=""> Mobil Telefon </label>
+                  <input type="text" value="3322720602" name="" id="" disabled />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </main>
-      <!-- ! MAIN -->
       <footer>
         <div class="wrapper">
           <div class="menu">
@@ -522,10 +533,6 @@
       </footer>
     </div>
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
       integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
@@ -533,24 +540,11 @@
       referrerpolicy="no-referrer"
     ></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
     <script src="./assets/js/menuAction.js"></script>
     <script src="./assets/js/navIsAuth.js"></script>
-    <script>
-      var swiper = new Swiper(".mySwiper", {
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        autoplay: {
-          delay: 2500,
-          disableOnInteraction: false,
-        },
-      });
-    </script>
+    <script src="./assets/js/itemDetail.js"></script>
     
     <!-- Tawk.to Live Chat -->
-    <script src="assets/js/tawk.js"></script>
+    <script src="./assets/js/tawk.js"></script>
   </body>
 </html>

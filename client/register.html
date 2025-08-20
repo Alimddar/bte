@@ -2,10 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Güvənin Və Qazancın Tək Adresi BetButa</title>
-    <!-- ! FONT -->
+    <title>Register</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,11 +22,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="./assets/style/index/index.css" />
-    <!-- ! OWL CARAOUSEL CSS -->
+    <link rel="stylesheet" href="./assets/style/register/index.css" />
   </head>
   <body>
-    <!-- ! nav mobile -->
     <section class="overlay"></section>
     <div class="nav-aside">
       <div class="wrapper">
@@ -143,22 +139,19 @@
       </div>
     </div>
 
-    <div class="root">
-      <!-- ! HEADER -->
+    <div id="root">
       <header id="header">
         <!--! HEADER => MOBILE -->
         <div class="mobile-part">
           <div class="menu-icon">
             <i class="fa-solid fa-bars"></i>
             <div class="logo-banner">
-              <a href="./index.html">
-                <img
-                  src="./img/section/logo.png"
-                  alt=""
-                  width="114"
-                  height="32"
-                />
-              </a>
+              <img
+                src="./img/section/logo.png"
+                alt=""
+                width="114"
+                height="32"
+              />
             </div>
           </div>
           <div class="content">
@@ -243,9 +236,7 @@
         </div>
         <div class="nav-part">
           <div class="banner">
-            <a href="./index.html">
-              <img src="./img/section/logo.png" alt="" width="114" height="32" />
-            </a>
+            <img src="./img/section/logo.png" alt="" width="114" height="32" />
           </div>
           <nav>
             <ul>
@@ -280,108 +271,169 @@
         </div>
       </header>
       <!-- ! HEADER -->
+      <main id="register-container">
+        <div class="register">
+          <div class="content-title">Qeydiyyat</div>
+          <div class="container">
+            <div class="wrapper">
+              <form action="">
+                <div class="my-information">
+                  <div class="title">Şəxsi Məlumatlar</div>
+                  <div class="input-groups">
+                    <div class="input-content content-1">
+                      <label for="">
+                        <span>Adınız</span>
+                        <input
+                          type="text"
+                          name="name"
+                          placeholder="Adınız"
+                          class=""
+                        />
+                      </label>
+                      <span class="msg">Ad səhvdir</span>
+                    </div>
+                    <div class="input-content content-2">
+                      <label for="">
+                        <span>Soyadınız</span>
+                        <input
+                          type="text"
+                          name="surname"
+                          placeholder="Soyadınız"
+                          class=""
+                        />
+                      </label>
+                      <span class="msg show">Soyadınız sehvdir</span>
+                    </div>
+                    <div class="input-content content-3">
+                      <label for="">
+                        <span>Doğum Tarixi</span>
+                        <div class="group">
+                          <select name="day" id="">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                          </select>
+                          <select name="month" id="">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                          </select>
+                          <select name="year" id="">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                          </select>
+                        </div>
+                      </label>
+                      <span class="msg show">Soyadınız sehvdir</span>
+                    </div>
+                    <div class="input-content content-4">
+                      <label for="">
+                        <span>Mail</span>
+                        <input
+                          type="email"
+                          name="email"
+                          placeholder="Mail"
+                          class=""
+                        />
+                      </label>
+                      <span class="msg show">Soyadınız sehvdir</span>
+                    </div>
+                    <div class="input-content content-5">
+                      <label for="">
+                        <span>Mobil</span>
+                        <div class="group">
+                          <select name="" id="">
+                            <option value="+994">994</option>
+                          </select>
+                          <input type="tel" name="mobile" placeholder="Mobil" />
+                        </div>
+                      </label>
+                      <span class="msg show">Soyadınız sehvdir</span>
+                    </div>
+                  </div>
+                </div>
 
-      <!-- ! MAIN -->
-      <main>
-        <div class="main-slider">
-          <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <a href="">
-                  <img src="./img/cover/cover-1.jpeg" alt="" />
+                <div class="my-account">
+                  <div class="title">Hesabım</div>
+                  <div class="input-groups">
+                    <div class="input-content content-1">
+                      <label for="">
+                        <span>İstifadəçi Adı</span>
+                        <input
+                          type="text"
+                          name="username"
+                          placeholder="İstifadəçi Adı"
+                          class=""
+                        />
+                      </label>
+                      <span class="msg">Ad səhvdir</span>
+                    </div>
+                    <div class="input-content content-2">
+                      <label for="">
+                        <span>CURRENCY</span>
+                        <select name="" id="">
+                          <option value="">sgsg</option>
+                        </select>
+                      </label>
+                      <span class="msg">Soyadınız sehvdir</span>
+                    </div>
+                    <div class="input-content content-3">
+                      <label for="">
+                        <span>Şifrə</span>
+                        <input
+                          type="password"
+                          name="password"
+                          placeholder="Şifrə"
+                          class=""
+                        />
+                      </label>
+                      <span class="msg">Soyadınız sehvdir</span>
+                    </div>
+                    <div class="input-content content-4">
+                      <label for="">
+                        <span>Şifrə Təkrar</span>
+                        <input
+                          type="password"
+                          name="repassword"
+                          placeholder="Şifrə Təkrar"
+                          class=""
+                        />
+                      </label>
+                      <span class="msg show">Soyadınız sehvdir</span>
+                    </div>
+                    <div class="input-content content-5">
+                      <label for="">
+                        <span>Promo Kod</span>
+                        <input
+                          type="text"
+                          name="promocode"
+                          placeholder="Promo Kod"
+                          class=""
+                        />
+                      </label>
+                      <span class="msg">Soyadınız sehvdir</span>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <div class="agreement">
+                <input type="checkbox" />
+                <a href="#">
+                  Qaydalar və Şərtləri oxuduğumu və anladığımı və 18 yaşımdan
+                  böyük olduğumu qəbul edirəm
                 </a>
               </div>
-              <div class="swiper-slide">
-                <a href="">
-                  <img src="./img/cover/cover-2.jpeg" alt="" />
-                </a>
-              </div>
-              <div class="swiper-slide">
-                <a href="">
-                  <img src="./img/cover/cover-3.png" alt="" />
-                </a>
-              </div>
-              <div class="swiper-slide">
-                <a href="">
-                  <img src="./img/cover/cover-4.jpeg" alt="" />
-                </a>
-              </div>
-              <div class="swiper-slide">
-                <a href="">
-                  <img src="./img/cover/cover-5.jpeg" alt="" />
-                </a>
-              </div>
-              <div class="swiper-slide">
-                <a href="">
-                  <img src="./img/cover/cover-6.jpeg" alt="" />
-                </a>
-              </div>
-              <div class="swiper-slide">
-                <a href="">
-                  <img src="./img/cover/cover-7.jpeg" alt="" />
-                </a>
-              </div>
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-          </div>
-        </div>
-        <div class="wrapper-content">
-          <div class="mini-games">
-            <div class="content">
-              <div class="box box-1">
-                <a href="">
-                  <img src="./img/section/section-1.png" alt="" />
-                </a>
-              </div>
-              <div class="box box-2">
-                <a href="">
-                  <img src="./img/section/section-2.jpeg" alt="" />
-                </a>
-              </div>
-              <div class="box box-3">
-                <a href="">
-                  <img src="./img/section/section-3.png" alt="" />
-                </a>
-              </div>
-              <div class="box box-4">
-                <a href="">
-                  <img src="./img/section/section-1.png" alt="" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="mini-games-2">
-            <h3 class="title">
-              <span>SLOT</span>
-              <a href="">SEE ALL</a>
-            </h3>
-            <div class="content">
-              <div class="box box-1">
-                <a href="">
-                  <img src="./img/section/game-1.jpeg" alt="" />
-                </a>
-              </div>
-              <div class="box box-2">
-                <a href="">
-                  <img src="./img/section/game-2.jpeg" alt="" />
-                </a>
-              </div>
-              <div class="box box-3">
-                <a href="">
-                  <img src="./img/section/game-3.jpeg" alt="" />
-                </a>
-              </div>
-              <div class="box box-4">
-                <a href="">
-                  <img src="./img/section/game-4.jpeg" alt="" />
-                </a>
+              <div class="btn-content">
+                <button class="register">Qeydiyyatı Sonlandır</button>
               </div>
             </div>
           </div>
         </div>
       </main>
-      <!-- ! MAIN -->
       <footer>
         <div class="wrapper">
           <div class="menu">
@@ -522,35 +574,16 @@
       </footer>
     </div>
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
       integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-    <script src="./assets/js/menuAction.js"></script>
     <script src="./assets/js/navIsAuth.js"></script>
-    <script>
-      var swiper = new Swiper(".mySwiper", {
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        autoplay: {
-          delay: 2500,
-          disableOnInteraction: false,
-        },
-      });
-    </script>
+    <script src="./assets/js/menuAction.js"></script>
     
     <!-- Tawk.to Live Chat -->
-    <script src="assets/js/tawk.js"></script>
+    <script src="./assets/js/tawk.js"></script>
   </body>
 </html>

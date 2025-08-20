@@ -1,0 +1,309 @@
+@import "../../common";
+@import "../../header";
+@import "../../depozit";
+@import "../../bottom";
+
+//*  DEPOZIT DESKTOP
+.depozit-content .content-title {
+  background: $text-yellow;
+  color: #fff;
+  font-weight: 600;
+}
+// ! END END END
+.depozit-content .form-groups {
+  margin-top: 25px;
+  padding: 0 10px;
+  display: flex;
+  font-size: 12px;
+  gap: 10px;
+  align-items: center;
+}
+
+.depozit-content .form-groups .input-content {
+  display: flex;
+  flex: 1;
+  gap: 3px;
+  flex-direction: column;
+}
+
+.depozit-content .form-groups button {
+  flex: 1;
+  @include btn;
+  height: 36px;
+  align-self: flex-end;
+}
+
+.depozit-content .form-groups input {
+  border: none;
+  outline: none;
+  padding: 9px 4px;
+}
+
+.depozit-content .form-groups select {
+  border: none;
+  outline: none;
+  padding: 9px 4px;
+}
+
+.table-container {
+  border-radius: 8px;
+  font-size: 12px;
+  overflow: hidden;
+}
+
+table {
+  width: 98%;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #f4c430;
+  color: #333;
+}
+
+th {
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+  margin: 0;
+  color: #fff;
+  border-right: 1px solid #e0e0e0;
+}
+
+th:last-child {
+  border-right: none;
+}
+
+td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  margin: 0;
+}
+
+td:last-child {
+  border-right: none;
+}
+
+tbody tr {
+  background-color: #ebebeb;
+  transition: 0.2s all;
+}
+
+tbody tr:hover {
+  background-color: #c7c4c4;
+}
+
+.date-time {
+  white-space: nowrap;
+}
+
+.amount {
+  font-weight: 600;
+  color: #2c5aa0;
+}
+
+@media screen and (max-width: 768px) {
+  table {
+    font-size: 12px;
+  }
+
+  th,
+  td {
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  main .container {
+    width: 95%;
+  }
+  main .container .depozit-content {
+    background-color: transparent;
+  }
+
+  .depozit-content .form-groups {
+    flex-wrap: wrap;
+  }
+
+  .depozit-content .form-groups .input-content label {
+    color: #fff;
+  }
+  .depozit-content .form-groups .content-1 {
+    flex-basis: 40%;
+  }
+  .depozit-content .form-groups .content-2 {
+    flex-basis: 40%;
+  }
+  .depozit-content .form-groups .content-3 {
+    flex-basis: 40%;
+  }
+  .depozit-content .form-groups button {
+    flex: none;
+    flex-basis: 50%;
+    margin: 0 auto;
+  }
+  main .container .depozit-content .back {
+    display: block;
+    transform: rotateZ(90deg);
+  }
+}
+
+@media (max-width: 425px) {
+  main .container {
+    width: 98%;
+  }
+
+  .depozit-content .form-groups {
+    flex-wrap: wrap;
+    color: #fff;
+  }
+  .depozit-content .form-groups .content-1 {
+    flex-basis: 40%;
+  }
+  .depozit-content .form-groups .content-2 {
+    flex-basis: 40%;
+  }
+  .depozit-content .form-groups .content-3 {
+    flex-basis: 40%;
+  }
+  .depozit-content .form-groups button {
+    flex: none;
+    flex-basis: 100%;
+    margin: 0 auto;
+  }
+}
+
+.table-container {
+  border-radius: 8px;
+  font-size: 12px;
+  overflow: hidden;
+}
+
+table {
+  width: 98%;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #f4c430;
+  color: #333;
+}
+
+th {
+  padding: 12px 15px;
+  text-align: left;
+  color: #fff;
+  font-weight: 600;
+  border-right: 1px solid #e0e0e0;
+}
+
+th:last-child {
+  border-right: none;
+}
+
+td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+}
+
+td:last-child {
+  border-right: none;
+}
+
+tbody tr {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.date-time {
+  white-space: nowrap;
+}
+
+.amount {
+  font-weight: 600;
+  color: #2c5aa0;
+}
+
+/* Desktop görünümünde gizlenecek sütunlar */
+.desktop-only {
+  display: table-cell;
+}
+
+/* Mobil görünümünde gösterilecek sütunlar */
+.mobile-only {
+  display: none;
+}
+
+@media screen and (max-width: 650px) {
+  /* Desktop sütunlarını gizle */
+  .desktop-only {
+    display: none;
+  }
+
+  /* Mobil sütunlarını göster */
+  .mobile-only {
+    display: table-cell;
+  }
+
+  table {
+    font-size: 12px;
+    margin: 0 auto;
+    margin-top: 7px;
+    width: 95%;
+  }
+
+  th,
+  td {
+    padding: 10px 12px;
+  }
+
+  /* Mobilde sütun genişlikleri */
+  th:nth-child(1),
+  td:nth-child(1) {
+    width: 40%;
+  }
+
+  th:nth-child(2),
+  td:nth-child(2) {
+    width: 30%;
+    text-align: right;
+  }
+
+  th:nth-child(3),
+  td:nth-child(3) {
+    width: 30%;
+    text-align: center;
+  }
+
+  .table-amount {
+    font-size: 13px;
+  }
+
+  .table-date-time {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  table {
+    font-size: 13px;
+  }
+
+  th,
+  td {
+    padding: 8px 10px;
+  }
+
+  .date-time {
+    font-size: 12px;
+  }
+}

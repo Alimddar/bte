@@ -1,0 +1,127 @@
+body {
+  background-color: $background-c;
+}
+main {
+  margin-top: 15px;
+  padding-bottom: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+main .container {
+  width: 83%;
+  display: flex;
+
+  .account-content {
+    flex: 1;
+    background: #ececec;
+
+    .content-title {
+      background: #d9d9d9;
+      font-size: 13px;
+      font-weight: 600;
+      border-left: 3px solid $text-yellow;
+    }
+  }
+  .depozit-content {
+    flex: 4;
+    background-color: rgb(231 231 231);
+
+    .content-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 27px;
+    }
+  }
+
+  .depozit-content .back {
+    display: none;
+  }
+}
+
+// account content
+main .wrapper {
+  font-size: 13px;
+  padding-bottom: 40px;
+}
+
+main .wrapper .category {
+  margin-bottom: 5px;
+}
+
+main .wrapper .category hr {
+  border-top: 0.0625rem dashed #333;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  margin: 1.6875rem auto 0;
+  width: calc(100% - 3.125rem);
+}
+
+main .container .content-title {
+  height: 35px;
+  padding-left: 27px;
+  line-height: 35px;
+}
+
+main .container .wrapper .wrapper-title {
+  font-weight: 400;
+  padding: 10px 0;
+  padding-left: 24px;
+  color: #696969;
+}
+
+main .wrapper .sub-category ul li {
+  transition: background-color 120ms ease-in, color 120ms ease-in;
+  height: 31px;
+  position: relative;
+  line-height: 31px;
+  margin-bottom: 5px;
+  color: #949494;
+
+  a {
+    color: inherit;
+    position: absolute;
+    top: 0;
+    border-left: 2px solid transparent;
+    padding-left: 21px;
+    left: 0;
+    width: 100%;
+
+    &:hover {
+      background: #e2e2e2;
+      color: #222;
+      border-left: 2px solid $text-yellow;
+    }
+
+    &.active {
+      background: #e2e2e2;
+      color: #222;
+      border-left: 2px solid $text-yellow;
+    }
+  }
+}
+
+.depozit-content .content-title {
+  background: $text-yellow;
+  color: #fff;
+  font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+  main .container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 991px) {
+  main .container .account-content {
+    display: none;
+  }
+    main .container .depozit-content .back {
+    display: block;
+    transform: rotateZ(90deg);
+  }
+}
+

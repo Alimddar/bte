@@ -694,6 +694,124 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+body {
+  background-color: #20202b;
+}
+
+main {
+  margin-top: 15px;
+  padding-bottom: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+main .container {
+  width: 83%;
+  display: flex;
+}
+main .container .account-content {
+  flex: 1;
+  background: #ececec;
+}
+main .container .account-content .content-title {
+  background: #d9d9d9;
+  font-size: 13px;
+  font-weight: 600;
+  border-left: 3px solid #efc02c;
+}
+main .container .depozit-content {
+  flex: 4;
+  background-color: rgb(231, 231, 231);
+}
+main .container .depozit-content .content-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 27px;
+}
+main .container .depozit-content .back {
+  display: none;
+}
+
+main .wrapper {
+  font-size: 13px;
+  padding-bottom: 40px;
+}
+
+main .wrapper .category {
+  margin-bottom: 5px;
+}
+
+main .wrapper .category hr {
+  border-top: 0.0625rem dashed #333;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  margin: 1.6875rem auto 0;
+  width: calc(100% - 3.125rem);
+}
+
+main .container .content-title {
+  height: 35px;
+  padding-left: 27px;
+  line-height: 35px;
+}
+
+main .container .wrapper .wrapper-title {
+  font-weight: 400;
+  padding: 10px 0;
+  padding-left: 24px;
+  color: #696969;
+}
+
+main .wrapper .sub-category ul li {
+  transition: background-color 120ms ease-in, color 120ms ease-in;
+  height: 31px;
+  position: relative;
+  line-height: 31px;
+  margin-bottom: 5px;
+  color: #949494;
+}
+main .wrapper .sub-category ul li a {
+  color: inherit;
+  position: absolute;
+  top: 0;
+  border-left: 2px solid transparent;
+  padding-left: 21px;
+  left: 0;
+  width: 100%;
+}
+main .wrapper .sub-category ul li a:hover {
+  background: #e2e2e2;
+  color: #222;
+  border-left: 2px solid #efc02c;
+}
+main .wrapper .sub-category ul li a.active {
+  background: #e2e2e2;
+  color: #222;
+  border-left: 2px solid #efc02c;
+}
+
+.depozit-content .content-title {
+  background: #efc02c;
+  color: #fff;
+  font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+  main .container {
+    width: 90%;
+  }
+}
+@media (max-width: 991px) {
+  main .container .account-content {
+    display: none;
+  }
+  main .container .depozit-content .back {
+    display: block;
+    transform: rotateZ(90deg);
+  }
+}
 /* 1. Use a more-intuitive box-sizing model */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -802,6 +920,7 @@ h1, h2, h3, h4, h5, h6 {
 
 footer {
   background-color: #20202b;
+  
   padding: 30px 0;
 }
 
@@ -932,139 +1051,121 @@ footer .copyright-content .download-items {
     align-items: flex-end;
   }
 }
-#root {
-  display: flex;
-  flex-direction: column;
+main .container .depozit-content .content-title {
+  background: #efc02c;
+  color: #fff;
+  font-weight: 600;
+  display: none;
+}
+@media (max-width: 991px) {
+  main .container .depozit-content .content-title {
+    display: flex;
+  }
 }
 
-main {
-  background-image: url("../../../img/cover/cover-8.jpg");
-}
-main .wrapper-content .mini-games {
-  padding-bottom: 55px;
-  padding-top: 10px;
-  width: 82%;
-  margin: 0 auto;
-}
-main .wrapper-content .mini-games .content {
+main .depozit-content .balance-information {
   display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
+  padding: 25px;
+  gap: 20px;
+  border-bottom: 1px dashed #cecece;
 }
-main .wrapper-content .mini-games .content .box {
+main .depozit-content .balance-information .balance-amount {
   flex: 1;
-  height: 100%;
-  transition: 0.3s all ease-in-out;
+  background-color: #fff;
 }
-@media (max-width: 991px) {
-  main .wrapper-content .mini-games .content .box {
-    flex: auto !important;
-  }
-}
-main .wrapper-content .mini-games .content .box:hover {
-  transform: scale(1.03);
-}
-main .wrapper-content .mini-games .content .box img {
-  width: 100%;
-  height: 100%;
-}
-main .wrapper-content .mini-games .content .box a {
+main .depozit-content .balance-information .btn-depozit {
+  flex: 1;
+  position: relative;
+  border: 0;
+  outline: 0;
+  text-align: center;
+  box-sizing: border-box;
   display: inline-block;
-  width: 100%;
-  height: 260px;
+  background: #efc02c;
+  color: #fff;
+  font-weight: 500;
+  height: 28px;
+  line-height: 3px;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 5px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 120ms ease-in;
+  transition: transform 0.2s;
+  cursor: pointer;
+  height: 65px;
+  font-size: 17px;
 }
-@media (max-width: 991px) {
-  main .wrapper-content .mini-games .content .box a {
-    height: 230px;
-  }
-}
-@media (max-width: 680px) {
-  main .wrapper-content .mini-games .content .box a {
-    height: 200px;
-  }
-}
-main .wrapper-content .mini-games .content .box-1 {
-  flex: 2;
-}
-main .wrapper-content .mini-games .content .box-4 {
-  display: block;
-}
-@media (min-width: 992px) {
-  main .wrapper-content .mini-games .content .box-4 {
-    display: none;
-  }
-}
-@media (max-width: 1220px) {
-  main .wrapper-content .mini-games {
-    width: 90%;
-  }
-}
-@media (max-width: 991px) {
-  main .wrapper-content .mini-games {
-    width: 80%;
-  }
-}
-@media (max-width: 680px) {
-  main .wrapper-content .mini-games {
-    width: 70%;
-  }
-}
-@media (max-width: 420px) {
-  main .wrapper-content .mini-games {
-    width: 85%;
-  }
-}
-main .mini-games-2 {
-  padding-bottom: 30px;
-}
-main .mini-games-2 .content {
+
+.depozit-content .balance-information .balance-amount {
   display: flex;
-  flex-wrap: wrap;
-  width: 80%;
-  margin: 0 auto;
-  gap: 15px;
+  font-size: 17px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
 }
-@media (max-width: 680px) {
-  main .mini-games-2 .content {
-    align-items: center;
-    flex-direction: column;
-  }
+.depozit-content .balance-information .balance-amount b {
+  font-size: 18px;
 }
-main .mini-games-2 .content .box {
+
+.depozit-content .account-detail {
+  margin-top: 20px;
+  display: flex;
+  font-size: 13px;
+  padding: 0 25px;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+.depozit-content .account-detail .box {
   flex: 1;
 }
-@media (max-width: 680px) {
-  main .mini-games-2 .content .box {
-    flex: auto;
-    align-items: center;
+
+@media (max-width: 768px) {
+  .depozit-content .account-detail {
     flex-direction: column;
-    width: 350px;
-    height: 300px;
+    gap: 8px;
   }
 }
-@media (max-width: 420px) {
-  main .mini-games-2 .content .box {
-    width: 100%;
-    height: 100%;
-  }
-}
-main .mini-games-2 .title {
-  display: none;
-  justify-content: center;
-  font-family: "Oswald", "Sans-serif";
+.account-detail .box .data-content {
+  display: flex;
   align-items: center;
-  gap: 10px;
   margin-bottom: 15px;
 }
-main .mini-games-2 .title span {
-  color: rgba(255, 255, 255, 0.4);
+.account-detail .box .data-content label {
+  flex: 1;
 }
-main .mini-games-2 .title a {
-  color: #efc02c;
-  text-decoration: underline;
+.account-detail .box .data-content input {
+  flex: 2;
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  padding: 7px 0;
+  padding-left: 0.9375rem;
+  color: #333;
+  overflow: hidden;
 }
-@media (max-width: 768px) {
-  main .mini-games-2 .title {
-    display: flex;
+
+@media (max-width: 425px) {
+  main .container {
+    width: 95%;
+  }
+  main .depozit-content .balance-information {
+    flex-direction: column;
+    padding: 15px 20px;
+  }
+  main .depozit-content .balance-information .btn-depozit {
+    flex: none;
+    height: 40px;
+  }
+  main .depozit-content .balance-information .balance-amount {
+    flex: none;
+    height: 40px;
+  }
+  .depozit-content .account-detail {
+    padding: 5px 20px;
   }
 }/*# sourceMappingURL=index.css.map */

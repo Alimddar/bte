@@ -16,6 +16,42 @@ const User = sequelize.define('User', {
   password: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    validate: {
+      isEmail: true
+    }
+  },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  surname: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  mobile: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  country: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: 'Azerbaijan'
+  },
+  city: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  address: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  birthDate: {
+    type: DataTypes.DATEONLY,
+    allowNull: true
   }
 }, {
   hooks: {

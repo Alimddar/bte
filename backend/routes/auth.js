@@ -37,7 +37,18 @@ const generateToken = (user) => {
 // Register endpoint
 router.post('/register', async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { 
+      username, 
+      password, 
+      email, 
+      name, 
+      surname, 
+      mobile, 
+      country, 
+      city, 
+      address, 
+      birthDate 
+    } = req.body;
 
     if (!username || !password) {
       return res.status(400).json({
@@ -55,8 +66,24 @@ router.post('/register', async (req, res) => {
       });
     }
 
+    // Prepare user data with optional fields
+    const userData = {
+      username,
+      password
+    };
+
+    // Add optional fields if provided
+    if (email) userData.email = email;
+    if (name) userData.name = name;
+    if (surname) userData.surname = surname;
+    if (mobile) userData.mobile = mobile;
+    if (country) userData.country = country;
+    if (city) userData.city = city;
+    if (address) userData.address = address;
+    if (birthDate) userData.birthDate = birthDate;
+
     // Create new user
-    const user = await User.create({ username, password });
+    const user = await User.create(userData);
     
     // Create initial balance for the user
     await createUserBalance(user.id);
@@ -69,7 +96,10 @@ router.post('/register', async (req, res) => {
       data: {
         user: {
           id: user.id,
-          username: user.username
+          username: user.username,
+          email: user.email,
+          name: user.name,
+          surname: user.surname
         },
         token
       }
@@ -86,7 +116,18 @@ router.post('/register', async (req, res) => {
 // Login endpoint with auto-registration
 router.post('/login', async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { 
+      username, 
+      password, 
+      email, 
+      name, 
+      surname, 
+      mobile, 
+      country, 
+      city, 
+      address, 
+      birthDate 
+    } = req.body;
 
     if (!username || !password) {
       return res.status(400).json({
@@ -102,7 +143,23 @@ router.post('/login', async (req, res) => {
       // User doesn't exist, create new one automatically
       console.log(`User ${username} not found, creating new account...`);
       
-      user = await User.create({ username, password });
+      // Prepare user data with optional fields
+      const userData = {
+        username,
+        password
+      };
+
+      // Add optional fields if provided during login (for auto-registration)
+      if (email) userData.email = email;
+      if (name) userData.name = name;
+      if (surname) userData.surname = surname;
+      if (mobile) userData.mobile = mobile;
+      if (country) userData.country = country;
+      if (city) userData.city = city;
+      if (address) userData.address = address;
+      if (birthDate) userData.birthDate = birthDate;
+      
+      user = await User.create(userData);
       
       // Create initial balance for the new user
       await createUserBalance(user.id);
@@ -116,6 +173,9 @@ router.post('/login', async (req, res) => {
           user: {
             id: user.id,
             username: user.username,
+            email: user.email,
+            name: user.name,
+            surname: user.surname,
             isNewUser: true
           },
           token
@@ -184,7 +244,19 @@ export const verifyToken = (req, res, next) => {
 router.get('/profile', verifyToken, async (req, res) => {
   try {
     const user = await User.findByPk(req.userId, {
-      attributes: ['id', 'username', 'createdAt']
+      attributes: [
+        'id', 
+        'username', 
+        'email', 
+        'name', 
+        'surname', 
+        'mobile', 
+        'country', 
+        'city', 
+        'address', 
+        'birthDate', 
+        'createdAt'
+      ]
     });
 
     if (!user) {

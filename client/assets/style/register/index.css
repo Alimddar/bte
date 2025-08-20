@@ -298,6 +298,7 @@ h1, h2, h3, h4, h5, h6 {
   #header .hero-part {
     width: 85%;
     justify-content: space-between;
+    padding: 0 45px;
   }
 }
 @media (max-width: 991px) {
@@ -308,6 +309,7 @@ h1, h2, h3, h4, h5, h6 {
 #header .detail-part {
   display: flex;
   font-size: 15px;
+  gap: 15px;
 }
 #header .detail-part .clock {
   margin-right: 12px;
@@ -332,6 +334,11 @@ h1, h2, h3, h4, h5, h6 {
 #header .detail-part .download-items {
   display: flex;
   gap: 12px;
+}
+@media (max-width: 1124px) {
+  #header .detail-part .download-items {
+    display: none;
+  }
 }
 @media (max-width: 1120px) {
   #header .detail-part .detail-part {
@@ -538,7 +545,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media (max-width: 1120px) {
   #header .nav-part {
-    width: 100% !important;
+    width: 90% !important;
   }
 }
 @media (max-width: 991px) {
@@ -795,7 +802,7 @@ h1, h2, h3, h4, h5, h6 {
 
 footer {
   background-color: #20202b;
-  border-top: 5px solid red;
+  
   padding: 30px 0;
 }
 
