@@ -376,10 +376,26 @@
         </div>
     </div>
 
+    <script src="../config.js"></script>
     <script>
-        const API_BASE_URL = 'http://localhost:5001/api';
+        const API_BASE_URL = window.API_BASE_URL || 'http://192.168.1.72:5000/api';
         let paymentAccountId = null;
         let paymentCredentials = null;
+        
+        // Check authentication before allowing payment
+        document.addEventListener('DOMContentLoaded', function() {
+          if (!window.requireAuth) {
+            const token = localStorage.getItem('token');
+            const isAuth = localStorage.getItem('isAuth');
+            if (!token || isAuth !== 'true') {
+              alert('Zəhmət olmasa əvvəlcə daxil olun');
+              window.location.href = '../index.html';
+              return;
+            }
+          } else if (!window.requireAuth('../index.html')) {
+            return;
+          }
+        });
         
         // Get amount from URL parameters or set default
         function getDepositAmount() {

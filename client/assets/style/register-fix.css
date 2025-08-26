@@ -1,0 +1,161 @@
+/* Fix for Registration Page Date Selection and Form Issues */
+
+/* Date Selection Styling Fix */
+.input-groups .content-3 .group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.input-groups .content-3 .group select {
+    flex: 1;
+    height: 40px;
+    padding: 0 10px;
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.input-groups .content-3 .group select:hover {
+    border-color: #999;
+}
+
+.input-groups .content-3 .group select:focus {
+    border-color: #ffd43b;
+    box-shadow: 0 0 0 2px rgba(255, 212, 59, 0.2);
+}
+
+/* Mobile Country Code Select Styling */
+.input-groups .content-5 .group select {
+    flex: 0 0 auto;
+    min-width: 100px;
+    height: 40px;
+    padding: 0 10px;
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    background: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.input-groups .content-5 .group input {
+    border-radius: 0 4px 4px 0 !important;
+    border-left: none !important;
+}
+
+.input-groups .content-5 .group select:hover {
+    border-color: #999;
+}
+
+.input-groups .content-5 .group select:focus {
+    border-color: #ffd43b;
+    box-shadow: 0 0 0 2px rgba(255, 212, 59, 0.2);
+}
+
+/* Currency Select Styling */
+.my-account .content-2 select {
+    width: 100%;
+    height: 40px;
+    padding: 0 15px;
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.my-account .content-2 select:hover {
+    border-color: #999;
+}
+
+.my-account .content-2 select:focus {
+    border-color: #ffd43b;
+    box-shadow: 0 0 0 2px rgba(255, 212, 59, 0.2);
+}
+
+/* Hide validation messages by default */
+.input-content .msg {
+    display: none;
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.input-content .msg.show {
+    display: block;
+}
+
+/* Better checkbox styling */
+.agreement {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.agreement input[type="checkbox"] {
+    margin-top: 3px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.agreement a {
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.agreement a:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+/* Register button improvement */
+.btn-content button.register {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #ffd43b 0%, #ffbe0b 100%);
+    color: #2c3e50;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-content button.register:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 212, 59, 0.4);
+}
+
+.btn-content button.register:active {
+    transform: translateY(0);
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+    .input-groups .content-3 .group {
+        flex-wrap: wrap;
+    }
+    
+    .input-groups .content-3 .group select {
+        min-width: calc(33.333% - 6px);
+    }
+    
+    .input-groups .content-5 .group select {
+        min-width: 90px;
+    }
+}

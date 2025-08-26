@@ -135,15 +135,15 @@ class DepositHandler {
             return;
         }
         
-        // Check if user is authenticated
-        const token = localStorage.getItem('token');
-        console.log(`Token check: ${token ? 'Present' : 'Missing'}`);
-        
-        if (!token) {
+        // Check if user is authenticated using global function
+        if (!window.isAuthenticated()) {
             alert('Zəhmət olmasa əvvəlcə daxil olun');
             window.location.href = './index.html';
             return;
         }
+        
+        const token = localStorage.getItem('token');
+        console.log(`Token check: ${token ? 'Present' : 'Missing'}`);
         
         // Store deposit info for payment page
         const depositInfo = {

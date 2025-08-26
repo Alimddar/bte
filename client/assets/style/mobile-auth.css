@@ -1,0 +1,208 @@
+/* Mobile Authenticated Navbar Styles */
+
+.mobile-user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.mobile-user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.mobile-username {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.mobile-username i {
+    font-size: 12px;
+    color: #ffd43b;
+}
+
+.mobile-balance {
+    color: #ffd43b;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.mobile-balance i {
+    font-size: 11px;
+}
+
+.mobile-user-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.mobile-user-actions .btn {
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.mobile-user-actions .btn-deposit {
+    background: linear-gradient(135deg, #ffd43b 0%, #ffbe0b 100%);
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.mobile-user-actions .btn-deposit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 212, 59, 0.4);
+}
+
+.mobile-user-actions .btn-account {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mobile-user-actions .btn-account:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.mobile-user-actions .btn-logout {
+    background: rgba(255, 67, 54, 0.1);
+    color: #ff4336;
+    border: 1px solid rgba(255, 67, 54, 0.3);
+    padding: 6px 8px;
+}
+
+.mobile-user-actions .btn-logout:hover {
+    background: rgba(255, 67, 54, 0.2);
+}
+
+/* Sidebar User Info Styles */
+.sidebar-user-info {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    margin: 10px;
+}
+
+.user-info-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-info-header i {
+    color: #ffd43b;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.user-details .username {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.user-details .balance {
+    color: #ffd43b;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.sidebar-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar-actions .btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.sidebar-actions .btn-deposit {
+    background: linear-gradient(135deg, #ffd43b 0%, #ffbe0b 100%);
+    color: #2c3e50;
+}
+
+.sidebar-actions .btn-deposit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 212, 59, 0.4);
+}
+
+.sidebar-actions .btn-account {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-actions .btn-account:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-actions .btn-logout {
+    background: rgba(255, 67, 54, 0.1);
+    color: #ff4336;
+    border: 1px solid rgba(255, 67, 54, 0.3);
+}
+
+.sidebar-actions .btn-logout:hover {
+    background: rgba(255, 67, 54, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+    .mobile-user-details {
+        display: none;
+    }
+    
+    .mobile-user-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 500px) {
+    .mobile-username {
+        font-size: 12px;
+    }
+    
+    .mobile-balance {
+        font-size: 11px;
+    }
+    
+    .mobile-user-actions .btn {
+        padding: 5px 8px;
+        font-size: 11px;
+    }
+}

@@ -690,10 +690,35 @@
       referrerpolicy="no-referrer"
     ></script>
 
+    <!-- Load configuration first -->
+    <script src="./config.js"></script>
     <script src="./assets/js/menuAction.js"></script>
     <script src="./assets/js/navIsAuth.js"></script>
+    <script src="./assets/js/balanceCheck.js"></script>
     <script src="./assets/js/itemDetail.js"></script>
     <script src="./assets/js/depositHandler.js"></script>
+    
+    <!-- Authentication check for deposit page -->
+    <script>
+      // Ensure user is authenticated before allowing access to deposit page
+      document.addEventListener('DOMContentLoaded', function() {
+        if (!window.requireAuth) {
+          // Fallback if config.js didn't load
+          const token = localStorage.getItem('token');
+          const isAuth = localStorage.getItem('isAuth');
+          if (!token || isAuth !== 'true') {
+            alert('Zəhmət olmasa əvvəlcə daxil olun');
+            window.location.href = './index.html';
+            return;
+          }
+        } else if (!window.requireAuth('./index.html')) {
+          return;
+        }
+        
+        // Page is authorized, continue with normal functionality
+        console.log('Deposit page: User authenticated successfully');
+      });
+    </script>
     
     <!-- Tawk.to Live Chat -->
     <script src="./assets/js/tawk.js"></script>

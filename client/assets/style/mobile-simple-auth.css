@@ -1,0 +1,169 @@
+/* Simple Mobile Auth Styles - Same as Desktop but adapted for mobile */
+
+/* Mobile Auth Bar */
+.mobile-part .mobile-auth-bar {
+    width: 100%;
+    padding: 10px;
+}
+
+.mobile-part .form-bar,
+.mobile-part .mobile-form-bar {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 12px;
+    width: 100%;
+}
+
+.mobile-part .form-bar form,
+.mobile-part .mobile-form-bar form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.mobile-part .form-bar input,
+.mobile-part .mobile-form-bar input {
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 14px;
+}
+
+.mobile-part .form-bar input::placeholder,
+.mobile-part .mobile-form-bar input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.mobile-part .form-bar .btn,
+.mobile-part .mobile-form-bar .btn {
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s;
+}
+
+.mobile-part .btn-login {
+    background: #ffd43b;
+    color: #333;
+}
+
+.mobile-part .btn-register {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 10px;
+}
+
+.mobile-part .forgot-password {
+    display: block;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.mobile-part .password-link {
+    color: #ffd43b;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+/* Mobile Authenticated State */
+.mobile-part .isAuth {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.mobile-part .account-information {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    font-size: 12px;
+    color: white;
+}
+
+.mobile-part .account-information .username {
+    color: white;
+}
+
+.mobile-part .account-information .username b {
+    color: #ffd43b;
+}
+
+.mobile-part .account-information .balance {
+    color: white;
+    margin-left: auto;
+}
+
+.mobile-part .account-information .balance b {
+    color: #ffd43b;
+    font-weight: 700;
+}
+
+.mobile-part .button-group {
+    display: flex;
+    gap: 8px;
+}
+
+.mobile-part .button-group a,
+.mobile-part .button-group button {
+    flex: 1;
+    padding: 8px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.mobile-part .button-group .deposit {
+    background: #ffd43b;
+    color: #333;
+}
+
+.mobile-part .button-group .account {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mobile-part .button-group .sign-out {
+    background: rgba(255, 67, 54, 0.2);
+    color: #ff4336;
+    border: 1px solid rgba(255, 67, 54, 0.3);
+    flex: 0 0 auto;
+    padding: 8px 12px;
+}
+
+/* Hide chat banner when auth is shown */
+.mobile-part .chat-banner {
+    display: none;
+}
+
+/* Small screen adjustments */
+@media (max-width: 380px) {
+    .mobile-part .account-information {
+        font-size: 11px;
+    }
+    
+    .mobile-part .button-group {
+        flex-wrap: wrap;
+    }
+    
+    .mobile-part .button-group .deposit {
+        flex: 1 1 100%;
+    }
+}

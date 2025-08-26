@@ -1,0 +1,231 @@
+/* Mobile Navigation Auth Bar Styles */
+
+/* Mobile Form Bar Container */
+.mobile-form-bar {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 12px;
+    margin: 8px;
+    width: calc(100% - 16px);
+}
+
+/* Mobile Login Form */
+.mobile-form-bar form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.mobile-form-bar input {
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.mobile-form-bar input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.mobile-form-bar input:focus {
+    outline: none;
+    border-color: #ffd43b;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.mobile-form-bar .forgot-password {
+    display: block;
+    text-align: right;
+    margin-bottom: 8px;
+}
+
+.mobile-form-bar .password-link {
+    color: #ffd43b;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.mobile-form-bar .btn {
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.mobile-form-bar .btn-register {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 8px;
+}
+
+.mobile-form-bar .btn-register:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.mobile-form-bar .btn-login {
+    background: linear-gradient(135deg, #ffd43b 0%, #ffbe0b 100%);
+    color: #2c3e50;
+}
+
+.mobile-form-bar .btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 212, 59, 0.4);
+}
+
+/* Mobile Authenticated Bar */
+.mobile-isAuth {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mobile-account-information {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-account-information a {
+    color: #ffd43b;
+}
+
+.mobile-account-information .username {
+    color: white;
+    font-size: 13px;
+}
+
+.mobile-account-information .username b {
+    color: #ffd43b;
+    font-weight: 600;
+}
+
+.mobile-account-information .balance {
+    color: white;
+    font-size: 12px;
+    margin-left: auto;
+}
+
+.mobile-account-information .balance b {
+    color: #ffd43b;
+    font-weight: 700;
+}
+
+.mobile-button-group {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+}
+
+.mobile-button-group a,
+.mobile-button-group button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.mobile-button-group .deposit {
+    background: linear-gradient(135deg, #ffd43b 0%, #ffbe0b 100%);
+    color: #2c3e50;
+}
+
+.mobile-button-group .deposit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 212, 59, 0.4);
+}
+
+.mobile-button-group .account {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.mobile-button-group .account:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.mobile-button-group .mobile-sign-out {
+    background: rgba(255, 67, 54, 0.1);
+    color: #ff4336;
+    border: 1px solid rgba(255, 67, 54, 0.3);
+    flex: 0 0 auto;
+    padding: 10px 15px;
+}
+
+.mobile-button-group .mobile-sign-out:hover {
+    background: rgba(255, 67, 54, 0.2);
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-width: 380px) {
+    .mobile-form-bar {
+        padding: 10px;
+        margin: 5px;
+        width: calc(100% - 10px);
+    }
+    
+    .mobile-account-information {
+        font-size: 12px;
+    }
+    
+    .mobile-button-group {
+        flex-wrap: wrap;
+    }
+    
+    .mobile-button-group .deposit {
+        flex: 1 1 100%;
+        margin-bottom: 8px;
+    }
+}
+
+/* Transition animations */
+#mobile-auth-content {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hide on desktop */
+@media (min-width: 769px) {
+    #mobile-auth-content {
+        display: none !important;
+    }
+    
+    .mobile-form-bar {
+        display: none !important;
+    }
+}

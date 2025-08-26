@@ -1,7 +1,8 @@
 let authPart = document.querySelector("#content");
 let btnLogin = document.querySelector("#btn-login");
 
-const API_BASE_URL = 'http://localhost:5000/api';
+// Ensure config.js is loaded first
+const API_BASE_URL = window.API_BASE_URL || 'http://192.168.1.72:5000/api';
 
 let formBarNotAuth = `<div class="form-bar">
   <span class="forgot-password">
@@ -49,6 +50,104 @@ function createAuthenticatedNavbar(userData, balanceData) {
       </button>
     </div>
   </div>`;
+}
+
+function updateMobileNavbarAuth(userData, balanceData) {
+  const mobileContent = document.querySelector('.mobile-part .content');
+  if (mobileContent) {
+    // Enhanced mobile auth - show balance and user info
+    mobileContent.innerHTML = `
+      <div class="chat-banner">
+        <i class="fa-solid fa-comment"></i>
+      </div>
+      <div class="mobile-auth-display" style="display: flex; align-items: center; gap: 10px;">
+        <div class="mobile-balance" style="background: #667eea; color: white; padding: 6px 12px; border-radius: 12px; font-size: 13px; font-weight: 600;">
+          ${balanceData.balance || '0.00'} ${balanceData.currency || 'AZN'}
+        </div>
+        <div class="mobile-user-dropdown" style="position: relative;">
+          <div class="mobile-auth-icon" style="background: #ffd43b; border-radius: 50%; padding: 8px; display: inline-flex; cursor: pointer;" onclick="toggleMobileDropdown()">
+            <i class="fa-solid fa-user-circle" style="color: #333; font-size: 20px;"></i>
+          </div>
+          <div class="mobile-dropdown-menu" id="mobileDropdown" style="display: none; position: absolute; top: 100%; right: 0; background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); padding: 10px; margin-top: 5px; min-width: 150px; z-index: 1000;">
+            <div style="font-size: 12px; color: #666; margin-bottom: 8px;">Xoş gəldin, <strong>${userData.username || 'İstifadəçi'}</strong></div>
+            <a href="./depozit.html" style="display: block; padding: 6px 0; color: #333; text-decoration: none; font-size: 13px; border-bottom: 1px solid #eee;">💰 Depozit</a>
+            <a href="./personal.html" style="display: block; padding: 6px 0; color: #333; text-decoration: none; font-size: 13px; border-bottom: 1px solid #eee;">👤 Hesabım</a>
+            <button onclick="logout()" style="display: block; width: 100%; padding: 6px 0; background: none; border: none; color: #ff4757; text-align: left; font-size: 13px; cursor: pointer;">🚪 Çıxış</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+  
+  // Also update sidebar for authenticated state
+  const sidebarBtnGroups = document.querySelector('.nav-aside .btn-groups');
+  if (sidebarBtnGroups) {
+    sidebarBtnGroups.innerHTML = `
+      <div class="sidebar-user-info" style="padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; margin-bottom: 20px; color: white;">
+        <div class="user-info-header" style="text-align: center; margin-bottom: 15px;">
+          <i class="fa-solid fa-user-circle fa-3x" style="color: #ffd43b; margin-bottom: 10px;"></i>
+          <div class="user-details">
+            <div class="username" style="font-size: 16px; font-weight: 600; margin-bottom: 5px;">${userData.username || 'İstifadəçi'}</div>
+            <div class="balance" style="font-size: 14px; opacity: 0.9;">Balans: ${balanceData.balance || '0.00'} ${balanceData.currency || 'AZN'}</div>
+          </div>
+        </div>
+        <div class="sidebar-actions" style="display: flex; flex-direction: column; gap: 8px;">
+          <a href="./depozit.html" class="btn btn-deposit" style="background: #ffd43b; color: #333; padding: 10px; border-radius: 8px; text-decoration: none; text-align: center; font-weight: 600; font-size: 14px;">💰 Depozit</a>
+          <a href="./personal.html" class="btn btn-account" style="background: rgba(255,255,255,0.2); color: white; padding: 10px; border-radius: 8px; text-decoration: none; text-align: center; font-weight: 500; font-size: 14px;">👤 Hesabım</a>
+          <button class="btn btn-logout" onclick="logout()" style="background: #ff4757; color: white; padding: 10px; border-radius: 8px; border: none; font-weight: 500; font-size: 14px; cursor: pointer; width: 100%;">🚪 Çıxış</button>
+        </div>
+      </div>
+    `;
+  }
+}
+
+function updateMobileNavbarNotAuth() {
+  const mobileContent = document.querySelector('.mobile-part .content');
+  if (mobileContent) {
+    // Enhanced mobile login interface with actual form
+    mobileContent.innerHTML = `
+      <div class="chat-banner">
+        <i class="fa-solid fa-comment"></i>
+      </div>
+      <div class="mobile-auth-section">
+        <div class="mobile-form-toggle" style="display: flex; gap: 5px; margin-bottom: 10px;">
+          <button id="mobile-login-tab" class="tab-btn active" style="flex: 1; padding: 8px; background: #ffd43b; color: #333; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;">Daxil ol</button>
+          <button id="mobile-register-tab" class="tab-btn" style="flex: 1; padding: 8px; background: #f0f0f0; color: #666; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;">Qeydiyyat</button>
+        </div>
+        <div id="mobile-login-form" class="mobile-form-bar" style="display: block;">
+          <form style="display: flex; flex-direction: column; gap: 8px;">
+            <input type="text" class="username" id="mobile-username" placeholder="İstifadəçi adı" style="padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px;" />
+            <input type="password" class="password" id="mobile-password" placeholder="Şifrə" style="padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px;" />
+            <button type="button" id="mobile-btn-login" class="btn btn-login" style="background: #ffd43b; color: #333; padding: 10px; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer;">Daxil ol</button>
+          </form>
+        </div>
+        <div id="mobile-register-form" class="mobile-form-bar" style="display: none;">
+          <a href="./register.html" style="display: block; background: #667eea; color: white; padding: 10px; border-radius: 6px; text-decoration: none; text-align: center; font-size: 14px; font-weight: 600;">Qeydiyyatdan Keç</a>
+        </div>
+      </div>
+    `;
+    
+    // Setup mobile form toggle
+    setupMobileFormToggle();
+  }
+  
+  // Also update sidebar for non-authenticated state  
+  const sidebarBtnGroups = document.querySelector('.nav-aside .btn-groups');
+  if (sidebarBtnGroups) {
+    sidebarBtnGroups.innerHTML = `
+      <div style="display: flex; flex-direction: column; gap: 10px; padding: 10px;">
+        <a href="./register.html" class="btn btn-register" style="background: #667eea; color: white; padding: 12px; border-radius: 8px; text-decoration: none; text-align: center; font-weight: 600;">Qeydiyyatdan Keç</a>
+        <button class="btn btn-login" onclick="showSidebarLogin()" style="background: #ffd43b; color: #333; padding: 12px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; width: 100%;">Daxil ol</button>
+      </div>
+      <div id="sidebar-login-form" style="display: none; padding: 15px; background: #f8f9fa; border-radius: 8px; margin-top: 10px;">
+        <form style="display: flex; flex-direction: column; gap: 10px;">
+          <input type="text" class="username" id="sidebar-username" placeholder="İstifadəçi adı" style="padding: 10px; border: 1px solid #ddd; border-radius: 6px;" />
+          <input type="password" class="password" id="sidebar-password" placeholder="Şifrə" style="padding: 10px; border: 1px solid #ddd; border-radius: 6px;" />
+          <button type="button" id="sidebar-btn-login" style="background: #ffd43b; color: #333; padding: 10px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">Daxil ol</button>
+        </form>
+      </div>
+    `;
+  }
 }
 
 async function fetchUserData() {
@@ -116,18 +215,22 @@ async function checkAuth() {
       
       if (userData && balanceData) {
         authPart.innerHTML = createAuthenticatedNavbar(userData, balanceData);
+        updateMobileNavbarAuth(userData, balanceData);
         setupLogoutHandler();
       } else {
         authPart.innerHTML = formBarNotAuth;
+        updateMobileNavbarNotAuth();
         setupLoginHandler();
       }
     } catch (error) {
       console.error('Error in checkAuth:', error);
       authPart.innerHTML = formBarNotAuth;
+      updateMobileNavbarNotAuth();
       setupLoginHandler();
     }
   } else {
     authPart.innerHTML = formBarNotAuth;
+    updateMobileNavbarNotAuth();
     setupLoginHandler();
   }
 }
@@ -147,8 +250,8 @@ function setupLoginHandler() {
   });
   
   // Handle registration form if on register page
-  const registerFormBtn = document.querySelector('.register');
-  if (registerFormBtn) {
+  const registerFormBtn = document.querySelector('button.register');
+  if (registerFormBtn && window.location.pathname.includes('register.html')) {
     registerFormBtn.addEventListener('click', handleRegistration);
   }
 }
@@ -163,8 +266,22 @@ function setupLogoutHandler() {
 async function handleLogin(e) {
   e.preventDefault();
   
-  const usernameInput = document.querySelector('.username');
-  const passwordInput = document.querySelector('.password');
+  let usernameInput, passwordInput;
+  
+  // Check which login form was used
+  if (e.target.id === 'mobile-btn-login') {
+    // Mobile header form
+    usernameInput = document.querySelector('#mobile-username');
+    passwordInput = document.querySelector('#mobile-password');
+  } else if (e.target.id === 'sidebar-btn-login') {
+    // Sidebar mobile form
+    usernameInput = document.querySelector('#sidebar-username');
+    passwordInput = document.querySelector('#sidebar-password');
+  } else {
+    // Desktop form (fallback)
+    usernameInput = document.querySelector('.username');
+    passwordInput = document.querySelector('.password');
+  }
   
   const username = usernameInput?.value?.trim();
   const password = passwordInput?.value?.trim();
@@ -189,8 +306,15 @@ async function handleLogin(e) {
       localStorage.setItem('token', data.data.token);
       localStorage.setItem('isAuth', 'true');
       
+      // Clear form inputs
       if (usernameInput) usernameInput.value = '';
       if (passwordInput) passwordInput.value = '';
+      
+      // Hide mobile dropdown/forms after successful login
+      const mobileDropdown = document.getElementById('mobileDropdown');
+      const sidebarLoginForm = document.getElementById('sidebar-login-form');
+      if (mobileDropdown) mobileDropdown.style.display = 'none';
+      if (sidebarLoginForm) sidebarLoginForm.style.display = 'none';
       
       await checkAuth();
     } else {
@@ -204,6 +328,11 @@ async function handleLogin(e) {
 
 async function handleRegistration(e) {
   e.preventDefault();
+  
+  // Only run on register page
+  if (!window.location.pathname.includes('register.html')) {
+    return;
+  }
   
   const nameInput = document.querySelector('input[name="name"]');
   const surnameInput = document.querySelector('input[name="surname"]');
@@ -280,6 +409,77 @@ function logout() {
   localStorage.removeItem('token');
   localStorage.setItem('isAuth', 'false');
   checkAuth();
+}
+
+// Mobile dropdown toggle function
+function toggleMobileDropdown() {
+  const dropdown = document.getElementById('mobileDropdown');
+  if (dropdown) {
+    dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+  }
+}
+
+// Close mobile dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  const dropdown = document.getElementById('mobileDropdown');
+  const authIcon = document.querySelector('.mobile-auth-icon');
+  if (dropdown && authIcon && !authIcon.contains(e.target) && !dropdown.contains(e.target)) {
+    dropdown.style.display = 'none';
+  }
+});
+
+// Setup mobile form toggle
+function setupMobileFormToggle() {
+  const loginTab = document.getElementById('mobile-login-tab');
+  const registerTab = document.getElementById('mobile-register-tab');
+  const loginForm = document.getElementById('mobile-login-form');
+  const registerForm = document.getElementById('mobile-register-form');
+  const mobileLoginBtn = document.getElementById('mobile-btn-login');
+  
+  if (loginTab && registerTab && loginForm && registerForm) {
+    loginTab.addEventListener('click', () => {
+      loginTab.classList.add('active');
+      registerTab.classList.remove('active');
+      loginForm.style.display = 'block';
+      registerForm.style.display = 'none';
+      
+      loginTab.style.background = '#ffd43b';
+      loginTab.style.color = '#333';
+      registerTab.style.background = '#f0f0f0';
+      registerTab.style.color = '#666';
+    });
+    
+    registerTab.addEventListener('click', () => {
+      registerTab.classList.add('active');
+      loginTab.classList.remove('active');
+      registerForm.style.display = 'block';
+      loginForm.style.display = 'none';
+      
+      registerTab.style.background = '#667eea';
+      registerTab.style.color = 'white';
+      loginTab.style.background = '#f0f0f0';
+      loginTab.style.color = '#666';
+    });
+  }
+  
+  // Setup mobile login handler
+  if (mobileLoginBtn) {
+    mobileLoginBtn.addEventListener('click', handleLogin);
+  }
+}
+
+// Sidebar login form toggle
+function showSidebarLogin() {
+  const loginForm = document.getElementById('sidebar-login-form');
+  if (loginForm) {
+    loginForm.style.display = loginForm.style.display === 'none' ? 'block' : 'none';
+    
+    // Setup sidebar login handler
+    const sidebarLoginBtn = document.getElementById('sidebar-btn-login');
+    if (sidebarLoginBtn) {
+      sidebarLoginBtn.addEventListener('click', handleLogin);
+    }
+  }
 }
 
 // Test functions for compatibility
