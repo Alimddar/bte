@@ -481,7 +481,7 @@
                 
                 if (data.success) {
                     paymentCredentials = data.data;
-                    console.log('M10 credentials loaded:', paymentCredentials);
+                    // M10 credentials loaded successfully
                     
                     // Update UI with backend data
                     updatePaymentInfo();
@@ -518,7 +518,7 @@
                 if (accountNumberElement) {
                     currentAccountNumber = paymentCredentials.accountNumber;
                     accountNumberElement.textContent = currentAccountNumber;
-                    console.log('M10: Account number auto-filled from credentials:', currentAccountNumber);
+                    // Account number auto-filled from backend credentials
                 }
             }
             
@@ -527,7 +527,7 @@
                 const qrCodeImg = document.querySelector('.qr-code img');
                 if (qrCodeImg) {
                     qrCodeImg.src = paymentCredentials.qrCode;
-                    console.log('M10: QR code updated from credentials:', paymentCredentials.qrCode);
+                    // QR code updated from backend credentials
                     
                     // Add error handling for image loading
                     qrCodeImg.onerror = function() {
@@ -634,7 +634,7 @@
                 if (accountData) {
                     // Store the payment account ID for transaction creation
                     paymentAccountId = accountData.id;
-                    console.log('M10: Found payment account with ID:', paymentAccountId);
+                    // Payment account found and ID stored
                     
                     const accountNumberElement = document.getElementById('accountNumber');
                     console.log('M10: Account number element:', accountNumberElement);
@@ -800,7 +800,7 @@
                 
                 // For testing - create a temp token if none exists
                 if (!token) {
-                    console.log('No auth token found, creating test token...');
+                    // Creating test token for authentication
                     try {
                         const response = await fetch(`${API_BASE_URL}/auth/register`, {
                             method: 'POST',
@@ -814,7 +814,7 @@
                         if (result.success) {
                             token = result.data.token;
                             localStorage.setItem('authToken', token);
-                            console.log('Test token created:', token);
+                            // Test token created successfully
                         } else {
                             showToast('error', 'Test Token Error', 'Could not create test token');
                             return;

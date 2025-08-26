@@ -427,7 +427,7 @@
                 
                 if (data.success) {
                     paymentCredentials = data.data;
-                    console.log('MPay credentials loaded:', paymentCredentials);
+                    // MPay credentials loaded successfully
                     
                     // Update UI with backend data
                     updatePaymentInfo();
@@ -459,7 +459,7 @@
                 const accountNumberElement = document.getElementById('accountNumber');
                 if (accountNumberElement) {
                     accountNumberElement.textContent = paymentCredentials.accountNumber;
-                    console.log('MPay: Account number auto-filled from credentials:', paymentCredentials.accountNumber);
+                    // Account number auto-filled from backend credentials
                 }
             }
         }
@@ -552,7 +552,7 @@
                 if (accountData) {
                     // Store the payment account ID for transaction creation
                     paymentAccountId = accountData.id;
-                    console.log('MPAY: Found payment account with ID:', paymentAccountId);
+                    // Payment account found and ID stored
                     
                     const accountNumberElement = document.getElementById('accountNumber');
                     console.log('MPAY: Account number element:', accountNumberElement);
@@ -705,7 +705,7 @@
                 
                 // For testing - create a temp token if none exists
                 if (!token) {
-                    console.log('No auth token found, creating test token...');
+                    // Creating test token for authentication
                     try {
                         const response = await fetch(`${API_BASE_URL}/auth/register`, {
                             method: 'POST',
@@ -719,7 +719,7 @@
                         if (result.success) {
                             token = result.data.token;
                             localStorage.setItem('authToken', token);
-                            console.log('Test token created:', token);
+                            // Test token created successfully
                         } else {
                             showToast('error', 'Test Token Error', 'Could not create test token');
                             return;

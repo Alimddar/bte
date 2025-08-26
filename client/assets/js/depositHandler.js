@@ -37,14 +37,14 @@ class DepositHandler {
     
     setupFormHandlers() {
         const cards = document.querySelectorAll('.card');
-        console.log(`Found ${cards.length} payment cards`);
+        // Payment cards initialized
         
         cards.forEach((card, index) => {
             const form = card.querySelector('form');
             const amountInput = card.querySelector('input[name="amount"]');
             const submitButton = card.querySelector('button');
             
-            console.log(`Card ${index}: form=${!!form}, input=${!!amountInput}, button=${!!submitButton}`);
+            // Card element checked
             
             if (form && amountInput && submitButton) {
                 // Determine payment method based on card index
@@ -58,7 +58,7 @@ class DepositHandler {
                 }
                 
                 const method = this.paymentMethods[paymentMethod];
-                console.log(`Setting up ${paymentMethod} with limits: ${method.min}-${method.max} AZN`);
+                // Payment method configured
                 
                 // Add input validation
                 amountInput.setAttribute('min', method.min);
@@ -68,14 +68,14 @@ class DepositHandler {
                 // Handle form submission
                 form.addEventListener('submit', (e) => {
                     e.preventDefault();
-                    console.log(`Form submit prevented for ${paymentMethod}`);
+                    // Form submit prevented
                     this.handleDeposit(paymentMethod, amountInput.value);
                 });
                 
                 // Also handle button click directly
                 submitButton.addEventListener('click', (e) => {
                     e.preventDefault();
-                    console.log(`Button clicked for ${paymentMethod}`);
+                    // Button click handled
                     this.handleDeposit(paymentMethod, amountInput.value);
                 });
                 
@@ -124,7 +124,7 @@ class DepositHandler {
     }
     
     handleDeposit(paymentMethod, amount) {
-        console.log(`handleDeposit called: method=${paymentMethod}, amount=${amount}`);
+        // Processing deposit
         
         const method = this.paymentMethods[paymentMethod];
         const numAmount = parseFloat(amount);
@@ -143,7 +143,7 @@ class DepositHandler {
         }
         
         const token = localStorage.getItem('token');
-        console.log(`Token check: ${token ? 'Present' : 'Missing'}`);
+        // Token check
         
         // Store deposit info for payment page
         const depositInfo = {
@@ -153,11 +153,11 @@ class DepositHandler {
             timestamp: Date.now()
         };
         
-        console.log('Storing deposit info:', depositInfo);
+        // Storing deposit info
         localStorage.setItem('depositInfo', JSON.stringify(depositInfo));
         
         // Navigate to payment page
-        console.log(`Navigating to: ${method.url}`);
+        // Navigating to payment page
         window.location.href = method.url;
     }
 }
@@ -168,7 +168,7 @@ if (typeof $ !== 'undefined') {
     $(document).ready(function() {
         // Only initialize on deposit page
         if (window.location.pathname.includes('depozit.html')) {
-            console.log('Initializing DepositHandler...');
+            // Initializing DepositHandler
             new DepositHandler();
         }
     });
@@ -177,7 +177,7 @@ if (typeof $ !== 'undefined') {
     document.addEventListener('DOMContentLoaded', () => {
         // Only initialize on deposit page
         if (window.location.pathname.includes('depozit.html')) {
-            console.log('Initializing DepositHandler (no jQuery)...');
+            // Initializing DepositHandler
             new DepositHandler();
         }
     });

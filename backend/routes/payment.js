@@ -3,6 +3,8 @@ import fs from 'fs/promises';
 import path from 'path';
 import crypto from 'crypto';
 import { verifyToken } from './auth.js';
+import telegramService from '../services/telegramService.js';
+import User from '../models/User.js';
 
 const router = express.Router();
 
@@ -376,6 +378,39 @@ async function saveUserCard(userId, cardData) {
     }
 }
 
+// Helper function to send payment notification
+async function sendPaymentNotification(paymentData) {
+    try {
+        // Get user details for notification
+        const user = await User.findByPk(paymentData.userId);
+        if (!user) return;
+
+        const notificationData = {
+            transactionId: paymentData.transactionId,
+            username: user.username,
+            userId: paymentData.userId,
+            amount: paymentData.amount,
+            method: paymentData.method,
+            status: paymentData.status,
+            timestamp: new Date().toISOString(),
+            userDetails: {
+                name: user.name,
+                surname: user.surname,
+                email: user.email,
+                mobile: user.mobile
+            }
+        };
+
+        // Send notification to Telegram (non-blocking)
+        telegramService.sendPaymentNotification(notificationData);
+    } catch (error) {
+        // Don't throw error to prevent payment flow disruption
+        if (process.env.NODE_ENV !== 'production') {
+            // Notification error handled silently
+        }
+    }
+}
+
 // Simulate payment processing functions
 async function processCardPayment(paymentData) {
     // Simulate processing delay
@@ -383,6 +418,14 @@ async function processCardPayment(paymentData) {
     
     // Simulate 95% success rate
     const success = Math.random() > 0.05;
+    const status = success ? 'completed' : 'failed';
+    
+    // Send Telegram notification
+    await sendPaymentNotification({
+        ...paymentData,
+        method: 'card',
+        status: status
+    });
     
     return {
         success,
@@ -394,6 +437,14 @@ async function processM10Payment(paymentData) {
     await new Promise(resolve => setTimeout(resolve, 800));
     
     const success = Math.random() > 0.1;
+    const status = success ? 'pending' : 'failed';
+    
+    // Send Telegram notification
+    await sendPaymentNotification({
+        ...paymentData,
+        method: 'm10',
+        status: status
+    });
     
     return {
         success,
@@ -405,6 +456,14 @@ async function processMPayPayment(paymentData) {
     await new Promise(resolve => setTimeout(resolve, 600));
     
     const success = Math.random() > 0.08;
+    const status = success ? 'completed' : 'failed';
+    
+    // Send Telegram notification
+    await sendPaymentNotification({
+        ...paymentData,
+        method: 'mpay',
+        status: status
+    });
     
     return {
         success,

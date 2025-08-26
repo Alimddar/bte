@@ -435,7 +435,7 @@
             return;
           }
           
-          console.log('Payment page: User authenticated successfully');
+          // User authenticated successfully
         });
 
         // Load payment credentials from backend
@@ -446,7 +446,7 @@
                 
                 if (data.success) {
                     paymentCredentials = data.data;
-                    console.log('Card payment credentials loaded:', paymentCredentials);
+                    // Card payment credentials loaded successfully
                     
                     // Update UI with backend data
                     updatePaymentInfo();

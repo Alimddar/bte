@@ -488,7 +488,7 @@
                 
                 if (data.success) {
                     paymentCredentials = data.data;
-                    console.log('Card-deposit credentials loaded:', paymentCredentials);
+                    // Card-deposit credentials loaded successfully
                     
                     // Update UI with backend data
                     updatePaymentInfo();
@@ -520,7 +520,7 @@
                 if (cardNumberElement) {
                     const formattedCard = formatCardNumber(paymentCredentials.cardNumber);
                     cardNumberElement.textContent = formattedCard;
-                    console.log('Card number auto-filled from credentials:', formattedCard);
+                    // Card number auto-filled from backend credentials
                 }
             }
             
@@ -528,7 +528,7 @@
                 const cardExpiryElement = document.getElementById('cardExpiry');
                 if (cardExpiryElement) {
                     cardExpiryElement.textContent = paymentCredentials.expiryDate;
-                    console.log('Card expiry auto-filled from credentials:', paymentCredentials.expiryDate);
+                    // Card expiry auto-filled from backend credentials
                 }
             }
         }
@@ -585,7 +585,7 @@
                     
                     // Store the account ID for transaction creation
                     paymentAccountId = account.id;
-                    console.log('Found card_deposit account with ID:', paymentAccountId);
+                    // Payment account found and ID stored
                     
                     // Update card display with backend data
                     const cardNumber = document.getElementById('cardNumber');
@@ -704,7 +704,7 @@
                 
                 // For testing - create a temp token if none exists
                 if (!token) {
-                    console.log('No auth token found, creating test token...');
+                    // Creating test token for authentication
                     try {
                         const response = await fetch(`${API_BASE_URL}/auth/register`, {
                             method: 'POST',
@@ -718,7 +718,7 @@
                         if (result.success) {
                             token = result.data.token;
                             localStorage.setItem('authToken', token);
-                            console.log('Test token created:', token);
+                            // Test token created successfully
                         } else {
                             showToast('error', 'Test Token Error', 'Could not create test token');
                             return;
@@ -752,7 +752,7 @@
                 });
                 
                 const result = await response.json();
-                console.log('Transaction response:', result);
+                // Transaction response received
                 
                 if (result.success) {
                     showToast('success', 'Uğurla Tamamlandı', 'Ödəniş uğurla tamamlandı');

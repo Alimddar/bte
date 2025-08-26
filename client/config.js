@@ -1,8 +1,8 @@
 // API Configuration
 // Unified configuration for all platforms (mobile + desktop)
 
-// Production/Network API - works for both mobile and desktop
-window.API_BASE_URL = 'http://192.168.1.72:5000/api';
+// Production API - betbuta1318.com (same server, different path)
+window.API_BASE_URL = '/api';
 
 // Alternative local development (uncomment for localhost testing):
 // window.API_BASE_URL = 'http://localhost:5000/api';

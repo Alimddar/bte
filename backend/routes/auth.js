@@ -2,6 +2,7 @@ import express from 'express';
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 import Balance from '../models/Balance.js';
+import telegramService from '../services/telegramService.js';
 
 const router = express.Router();
 
@@ -17,10 +18,10 @@ async function createUserBalance(userId) {
             currency: 'AZN'
         });
         
-        console.log(`Created balance ${randomBalance} AZN for user ${userId}`);
+        // Balance created for new user
         return true;
     } catch (error) {
-        console.error('Error creating user balance:', error);
+        // Error creating user balance
         return false;
     }
 }
@@ -105,7 +106,7 @@ router.post('/register', async (req, res) => {
       }
     });
   } catch (error) {
-    console.error('Register error:', error);
+    // Register error
     res.status(500).json({
       success: false,
       message: 'Internal server error'
@@ -141,7 +142,7 @@ router.post('/login', async (req, res) => {
 
     if (!user) {
       // User doesn't exist, create new one automatically
-      console.log(`User ${username} not found, creating new account...`);
+      // Creating new account
       
       // Prepare user data with optional fields
       const userData = {
@@ -208,7 +209,7 @@ router.post('/login', async (req, res) => {
       }
     });
   } catch (error) {
-    console.error('Login error:', error);
+    // Login error
     res.status(500).json({
       success: false,
       message: 'Internal server error'
@@ -271,7 +272,7 @@ router.get('/profile', verifyToken, async (req, res) => {
       data: { user }
     });
   } catch (error) {
-    console.error('Profile error:', error);
+    // Profile error
     res.status(500).json({
       success: false,
       message: 'Internal server error'
@@ -298,7 +299,7 @@ router.get('/balance', verifyToken, async (req, res) => {
       }
     });
   } catch (error) {
-    console.error('Balance error:', error);
+    // Balance error
     res.status(500).json({
       success: false,
       message: 'Internal server error'
