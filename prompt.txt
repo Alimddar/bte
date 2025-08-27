@@ -1,0 +1,47 @@
+root@ip-208-84-102-150:/home/betbuta1318/nodejs-app/backend# cat /home/betbuta1318/nodejs-app/backend/package.json
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Simple authentication backend with auto-registration",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "mysql2": "^3.6.5",
+    "sequelize": "^6.35.2",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}root@ip-208-84-102-150:/home/betbuta1318/nodejs-app/backend# head -20 /home/betbuta1318/nodejs-app/backend/server.js
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import sequelize from './config/database.js';
+import authRoutes from './routes/auth.js';
+import paymentRoutes from './routes/payment.js';
+import usersRoutes from './routes/users.js';
+import balancesRoutes from './routes/balances.js';
+import paymentMethodsRoutes from './routes/payment-methods.js';
+import transactionRoutes from './routes/transactions.js';
+import './models/Transaction.js'; // Import to ensure model is loaded
+import telegramService from './services/telegramService.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+dotenv.config();
+
+root@ip-208-84-102-150:/home/betbuta1318/nodejs-app/backend# ls -la /home/betbuta1318/nodejs-app/backend/node_modules/ | grep express
+drwxr-xr-x   3 root root  4096 Aug 26 23:42 express
+root@ip-208-84-102-150:/home/betbuta1318/nodejs-app/backend#
